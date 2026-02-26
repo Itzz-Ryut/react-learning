@@ -1,3 +1,5 @@
+// Props component
+/*
 function User(props) {
   console.log(props);
   return (
@@ -8,15 +10,23 @@ function User(props) {
     </>
   );
 }
+  */
+
+
+// destructing Component
+function User({ name, role, age }) {
+  return(<>
+    <p>{name} - {role} - {age >= 18 ? "Adult" : "Minor"}</p>
+  </>
+  );
+}
 
 function App() {
   return (
     <>
       <User name='Aryan' role='Developer' age={20} />
-      <User name='Ryut' role='' age={18} />
-      <User name='XYZ' role='Studennt' age={12} />
-      <User name='A' role='Dev' />
-      <User name='A' role='Tester' />
+      <User name='Ryut' role='Designer' age={16} />
+      <User name='XYZ' role='Gamer' age={22} />
     </>
   );
 }
