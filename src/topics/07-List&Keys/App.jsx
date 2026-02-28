@@ -9,11 +9,13 @@ function App() {
   ]);
   const [text, setText] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
+  const [taskPriority, setPriority] = useState("")
 
   function addTask() {
-    if (text !== ""){
-      setTasks([...tasks, { id: Date.now(), title: text, priority: "medium" }]);
-    setText("");}
+    if (text !== "" && taskPriority !== ""){
+      setTasks([...tasks, { id: Date.now(), title: text, priority: taskPriority }]);
+    setText("");
+    setPriority("")}
   }
   function inputText(e) {
     setText(e.target.value);
@@ -25,6 +27,7 @@ function App() {
     activeFilter === "all"
       ? tasks
       : tasks.filter((task) => task.priority === activeFilter);
+
 
   return (
     <>
@@ -50,6 +53,12 @@ function App() {
           type='text'
           placeholder='Enter Title'
         />
+        <select value={taskPriority} name="priority" id="priority" onChange={(e) => setPriority(e.target.value)}>
+          <option value="">--Choose Priority--</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
         <button onClick={addTask}>Add Task</button>
       </div>
     </>
